@@ -1,0 +1,256 @@
+{
+	"squirrel":{
+		"name":"Mr. Balthazar",
+		"speed":0.05,
+		"sounds":["s1","s2","s3","s4"],
+		"intro":["Welcome to the interview room.","My name is Juan Balthazar.","I'll be screening you as a candidate for our competitive program.","To be honest, I don't like the look of you.","Not one bit.","But I'm legally required to discriminate on things other than looks.","Well, should we begin?"],
+		"questions":[
+			{
+				"question":"So. You want to work for Indigo Co, huh?",
+				"options":["Um, are you a squirrel?","Yessir!","Not really, I don't even know why I'm here"],
+				"responses":["What are you talking about? Anyways.","Hmm...(sucking up already, eh?)...alright then.","Haha, very funny."],
+				"response_events":[{"type":"s","value":-1},{"type":"c","value":1},{"type":"h","value":1}]
+			},
+			{
+				"question":"What's your background?",
+				"options":["I come from a long line of lawyers","I dunno","I graduated from Harvard College Yale. And got... C's. Lots and lots of C's"],
+				"responses":["Well, we might be able to overlook that.","Sometimes it's better not to say anything.","Good to hear."],
+				"response_events":[{"type":"c","value":-1},{"type":"c","value":-1},{"type":"c","value":1}]
+			},
+			{
+				"question":"Name one thing you're proud of.",
+				"options":["I once collated my taxes in triplicate","Why do you ask?","I did a triple backflip into a pool of lava sharks"],
+				"responses":["Sounds reasonable.","Why so defensive? Next question.","Reckless endangerment of self. Got it."],
+				"response_events":[{"type":"s","value":1},{"type":"c","value":-1},{"type":"s","value":-1}]
+			},
+			{
+				"question":"Have you ever hallucinated?",
+				"options":["No way! Especially not at this very moment.","No! No! No!","No! Definitely not."],
+				"responses":["O...kay?","O...kay?","O...kay?"],
+				"response_events":[{"type":"x","value":-1},{"type":"x","value":-1},{"type":"x","value":-1}]
+			},
+			{
+				"question":"What's your greatest weakness?",
+				"options":["No sense of humor","Sleeping in far too late every day","Squirrels"],
+				"responses":["We have enough of that here at Indigo Co already.","That won't fly here, though time certainly will.","Sensible enough. Those things have rabies."],
+				"response_events":[{"type":"h","value":-1},{"type":"c","value":-1},{"type":"s","value":1}]
+			}
+			
+		],
+		"questions_asked":[],
+		"questions_to_ask":5,
+		"outro":["Well, thank you for coming in.","I think we have about all we need-","Oh wait, I have a request from the main office.","They're sending in another specialist to continue the screening.","Please wait here."]
+	},
+	"monitorman":{
+		"name":"The Specialist",
+		"speed":0.02,
+		"sounds":["m1","m2","m3","m4","m5","m6","m7","m8","m9","m10","m11","m12"],
+		"intro":["Good, you're still here.","I am going to ask you a series of questions.","I want you to answer honestly, completely, and clearly.","Failure to comply with this request will be noted by the International Board of Hypnotherapy.","We have sensors ensuring these parameters are met.","Let's get started:"],
+		"questions":[
+			{
+				"question":"Are you, or have you ever been a member of an athletics club?",
+				"options":["Afraid not","I was part of a scuba diving crew once; does that count?","I once played on a local basketball team, the Red Hawks"],
+				"responses":["Remember, tell the truth.","You're being evasive...(records something)","That's very... interesting. Did you know that 40% of that team is now on at least one watchlist?"],
+				"response_events":[{"type":"h","value":-1},{"type":"c","value":-1},{"type":"h","value":-1}]
+			},
+			{
+				"question":"Where do you keep your identification?",
+				"options":["I keep it on me at all times","I don't have identification","You shouldn't need to know that"],
+				"responses":["Oho. Quite the paranoid one aren't you? Well, no need for that. You're perfectly safe.","No identification? Don't lie. Everyone has identification.","That's what you think."],
+				"response_events":[{"type":"h","value":1},{"type":"h","value":-1},{"type":"c","value":1}]
+			},
+			{
+				"question":"Where did you hide the diamonds?",
+				"options":["What?","What, like a wedding ring?","With the one-armed octopus"],
+				"responses":["Don't play coy. We picked them up yesterday, and the person you had carry them.","Of course not. You think cubic zirconia is just as valuable.","A grave mistake."],
+				"response_events":[{"type":"c","value":1},{"type":"s","value":-1},{"type":"c","value":-1}]
+			},
+			{
+				"question":"By what were your voting habits characterized last election?",
+				"options":["Fiscal conservatism","Social liberalism","Environmental protectionism"],
+				"responses":["Depriving your government of resources. Foul.","You know what sort of depravities you're allowing the populace to enjoy?","Next year we won't have enough energy to grow food for the world's population. Thanks for that."],
+				"response_events":[{"type":"h","value":-1},{"type":"s","value":-1},{"type":"c","value":-1}]
+			},
+			{
+				"question":"Where have you travelled recently?",
+				"options":["Nowhere, I've stayed home","Canada","Malawi"],
+				"responses":["That doesn't agree with your credit card bills.","Oh, what a wonderful time it must have been!","I see...(scribbles something furiously)"],
+				"response_events":[{"type":"h","value":-1},{"type":"c","value":3},{"type":"c","value":-1}]
+			},
+			{
+				"question":"What is your citizenship status?",
+				"options":["I was born here - full citizen","I moved here from abroad","I'm not a citizen"],
+				"responses":["It certainly seems that way at first glance.","Not very specific, are you? Moving on.","That won't be a problem. For us."],
+				"response_events":[{"type":"h","value":-1},{"type":"h","value":-1},{"type":"c","value":-1}]
+			},
+			{
+				"question":"How often do you engage with psychotropic substances?",
+				"options":["I don't","Only once in a while","Only once, in Prague"],
+				"responses":["It seems to be working too well.","If only that were true.","That's a laugh. You're in Prague."],
+				"response_events":[{"type":"s","value":-1},{"type":"h","value":-1},{"type":"s","value":-1}]
+			}
+		],
+		"questions_asked":[],
+		"questions_to_ask":5,
+		"outro":["Thank you for your time.","You may be hearing from our agency soon.","We'll contact you, no need to call us.","On second thought, no need to look into it. Just forget I said anything.","Another interviewer will be with you shortly."]
+	},
+	"creep":{
+		"name":"Suavo Hombard",
+		"speed":0.03,
+		"sounds":["c1","c2","c3","c4"],
+		"intro":["Yo! I seem to have lost my phone number, can I have yours?","Ha, just kidding. Sorta.","How's your interview going? Fine?","Because you sure are! Haha.","Well, let's start this up."],
+		"questions":[
+			{
+				"question":"What's your sign?",
+				"options":["Don't put much stock in the zodiac myself","Cancer, maybe? Or maybe it's Leo?","Aquarius"],
+				"responses":["Aw, don't be that way.","You're even making it hard for me to remember mine!","Mmm, nothing like water to smooth things over."],
+				"response_events":[{"type":"h","value":-1},{"type":"h","value":1},{"type":"c","value":1}]
+			},
+			{
+				"question":"How old are you?",
+				"options":["Fifty-two","Nineteen","I'm not telling you that"],
+				"responses":["Wow! I would never have guessed. You're pulling my leg, aren't you?","Hey, you know what? Me too.","No, see it's for the... official record. You know. Never mind."],
+				"response_events":[{"type":"h","value":1},{"type":"c","value":1},{"type":"h","value":-1}]
+			},
+			{
+				"question":"Where do you live?",
+				"options":["With my parents","What kind of question is that?","Over on the south side of town"],
+				"responses":["That's great.","I'd have told you where my abode was, if you know what I mean!","I might come visit you sometime!"],
+				"response_events":[{"type":"c","value":-1},{"type":"s","value":-1},{"type":"c","value":1}]
+			},
+			{
+				"question":"Do you like to party?",
+				"options":["Yeah!","No!","Not with fellow employees"],
+				"responses":["Sweet! Come by my office, and I'll show you a good time.","Well, that can always change. Right?","Ooo! Ouch. Burn."],
+				"response_events":[{"type":"c","value":1},{"type":"s","value":-1},{"type":"c","value":-1}]
+			},
+			{
+				"question":"Do you have a map?",
+				"options":["Huh?","No","My phone does"],
+				"responses":["Because I'm getting lost in your eyes!","Well, let's get lost together then!","Because.. oh never mind. Punchline ruined."],
+				"response_events":[{"type":"h","value":1},{"type":"c","value":2},{"type":"c","value":-1}]
+			},
+			{
+				"question":"Ok, really. What's your number?",
+				"options":["Weeeeird","867-5309","I don't have a phone. Or email. Or a postal box"],
+				"responses":["Only if you make it weird!","Missing an area code? Oh wait. I get it!","Well, you stil have a doorbell, right?"],
+				"response_events":[{"type":"s","value":-1},{"type":"h","value":1},{"type":"c","value":-1}]
+			},
+			{
+				"question":"What time do you get off work?",
+				"options":["Um... I haven't been hired yet","Never","5 o'clock pm"],
+				"responses":["Oh. Right!","That seems highly dubious!","I'll see you then!"],
+				"response_events":[{"type":"s","value":1},{"type":"h","value":-1},{"type":"c","value":1}]
+			}
+		],
+		"questions_asked":[],
+		"questions_to_ask":5,
+		"outro":["Well, I think there's definitely something between us.","You feel it too, I can tell.","I'd love to stick around and chat, but I've got a harassment seminar to attend.","Catch you later! There'll be another one in here in a few minutes."]
+	},
+	"reporter":{
+		"name":"Scout Henderson",
+		"speed":0.03,
+		"sounds":["r1","r2","r3","r4","r5"],
+		"intro":["Hello, and welcome to the program!","The show where we aim to hire new recruits","I'm your host, Scout Henderson, and with me today is... somebody.","Well, Somebody, how about we get down to asking some questions?"],
+		"questions":[
+			{
+				"question":"What's next for you?",
+				"options":["Getting hired, hopefully","I'd like to do maybe an art film, something that leaves a legacy, you know?","Going home and eating ice cream"],
+				"responses":["I'm sure a lot of our viewers want to do the same thing!","Hoho! I wonder whether you could pull it off. I hope so.","That sounds like a great idea!"],
+				"response_events":[{"type":"s","value":1},{"type":"h","value":1},{"type":"s","value":1}]
+			},
+			{
+				"question":"So, is there a baby on the way?",
+				"options":["You know it. Buns in the oven","Well, now's not the best time","Whuh?"],
+				"responses":["Oh, I knew it! You're positively glowing.","No reason to rush things, you know!","Well, if you're not comfortable answering, you don't need to."],
+				"response_events":[{"type":"h","value":1},{"type":"s","value":1},{"type":"h","value":-1}]
+			},
+			{
+				"question":"What advice would you give to all the kids who look up to you?",
+				"options":["Winners don't do drugs","Exercise and eat a fruit and vegetable every day","Be excellent to each other"],
+				"responses":["That's right, kids!","Even when you'd rather not, am I right?","Rock on!"],
+				"response_events":[{"type":"s","value":1},{"type":"s","value":1},{"type":"h","value":1}]
+			},
+			{
+				"question":"What's your favorite color? We'd all like to know.",
+				"options":["Blue","Green","Magenta"],
+				"responses":["Cool blue!","Good old green!","NO. Just NO. No Magenta. NO."],
+				"response_events":[{"type":"c","value":1},{"type":"s","value":1},{"type":"c","value":-2}]
+			},
+			{
+				"question":"Can I get your autograph?",
+				"options":["Huh?","No","Absolutely"],
+				"responses":["Just an idea. I get it if you're busy.","Fine.","Squeee!"],
+				"response_events":[{"type":"h","value":0},{"type":"h","value":-1},{"type":"h","value":1}]
+			},
+			{
+				"question":"You're so cool!",
+				"options":["Thanks hon","Ya know it","Okay?"],
+				"responses":["You're quite welcome!","..Yup!","Heh heh."],
+				"response_events":[{"type":"h","value":1},{"type":"s","value":1},{"type":"s","value":-1}]
+			},
+			{
+				"question":"What's your favorite food?",
+				"options":["Pizza","Fish","Soup"],
+				"responses":["Classic!","Tasty and good for you!","Hearty!"],
+				"response_events":[{"type":"h","value":1},{"type":"s","value":1},{"type":"c","value":1}]
+			}
+		],
+		"questions_asked":[],
+		"questions_to_ask":5,
+		"outro":["Well, we're all out of time for today's installment.","We'll move on to the next interviewer.","Everyone give... Somebody ... a big hand!"]
+	},
+	"professor":{
+		"name":"Dr. Sliefmer",
+		"speed":0.03,
+		"sounds":["p1","p2","p3","p4","p5","p6","p7"],
+		"intro":["Hello, youngster.","I am now going to test your mind","Do not fear - the puzzles I will pose to you will be tractable.","Nothing a valid candidate like yourself could not handle.","Let us begin the test."],
+		"questions":[
+			{
+				"question":"What is the value of 2 to the 30th power?",
+				"options":["2948371286","2468101214","1073741824"],
+				"responses":["Incorrect.","Incorrect.","Correct."],
+				"response_events":[{"type":"s","value":-1},{"type":"s","value":-1},{"type":"s","value":1}]
+			},
+			{
+				"question":"In what region did Zoroastrianism primarily abound?",
+				"options":["Western Asia","Sub-Saharan Africa","South America"],
+				"responses":["Correct - more precisely, the Persian and Iranian climes.","Incorrect.","Incorrect"],
+				"response_events":[{"type":"c","value":1},{"type":"c","value":-1},{"type":"c","value":-1}]
+			},
+			{
+				"question":"What combination of actions can be used to reduce the light on some camera film?",
+				"options":["Enlarge the aperture and raise shutter speed","Increase exposure time and lower shutter speed","Shrink the aperture and raise shutter speed"],
+				"responses":["No!","Not at all!","Correct."],
+				"response_events":[{"type":"h","value":-1},{"type":"h","value":-1},{"type":"h","value":1}]
+			},
+			{
+				"question":"What's the fifth interval in the key of A flat?",
+				"options":["D sharp","B flat","G"],
+				"responses":["Correct, and equivalent to E flat.","Not even close.","Incorrect"],
+				"response_events":[{"type":"c","value":1},{"type":"s","value":-1},{"type":"c","value":-1}]
+			},
+			{
+				"question":"What is a 'precentor'?",
+				"options":["An event occurring before a storm","A cleric who leads choral services","Nobody knows"],
+				"responses":["Not quite.","Yes.","I do."],
+				"response_events":[{"type":"s","value":-1},{"type":"c","value":1},{"type":"h","value":-1}]
+			},
+			{
+				"question":"What is OPEC?",
+				"options":["The Organization of the Petroleum Exporting Countries","The Organization for Protection of Environmental Concerns","The Open Protocol for Email Cancellation"],
+				"responses":["That's right.","Oh dear. Quite the opposite.","That sounds made up."],
+				"response_events":[{"type":"c","value":1},{"type":"h","value":-1},{"type":"s","value":-1}]
+			},
+			{
+				"question":"What is the coloration of a Huntsman Spider?",
+				"options":["Mainly brown with black and red","Mainly black with white and red","Mainly blue with purple and magenta"],
+				"responses":["You are correct.","Unfortunately not","NO. No magenta spiders. Just no."],
+				"response_events":[{"type":"s","value":1},{"type":"h","value":-1},{"type":"c","value":-2}]
+			}
+		],
+		"questions_asked":[],
+		"questions_to_ask":5,
+		"outro":["Those are all the questions I have for you.","This concludes the screening.","Your results have been compiled as you were being interviewed.","They will be out shortly.","Have a fine day; I take my leave."]
+	}
+}

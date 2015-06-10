@@ -1,0 +1,200 @@
+{
+	"dialogue":
+	{
+		"deadjoe":
+		{
+			"length":2,
+			"next":"deadjoeshades",
+			"0":
+			{
+				"speaker":"Ghost",
+				"text":"Well, I guess I'm dead. I'll never be a master hacker now.",
+				"expression":"Derp"
+			},
+			"1":
+			{
+				"speaker":"Ghost",
+				"text":"(Did I really look like that?)",
+				"expression":"Gah"
+			}
+		},
+		"deadjoeshades":
+		{
+			"length":3,
+			"next":"deadjoefinal",
+			"0":
+			{
+				"speaker":"Ghost",
+				"text":"Those are some sweet shades. I wonder if I'm corporeal enough to wear them.",
+				"expression":"Derp"
+			},
+			"1":
+			{
+				"speaker":"Ghost Incognito",
+				"text":"...",
+				"expression":"Incognito"
+			},
+			"2":
+			{
+				"speaker":"Ghost",
+				"text":"Maybe later",
+				"expression":"Derp"
+			}
+		},
+		"deadjoefinal":
+		{
+			"length":1,
+			"next":"deadjoefinal",
+			"0":
+			{
+				"speaker":"Ghost",
+				"text":"I wonder who's going to find the body.",
+				"expression":"Derp"
+			}
+		},
+		"trash":
+		{
+			"length":2,
+			"next":"poster",
+			"0":
+			{
+				"speaker":"Ghost",
+				"text":"I never did clean that up...",
+				"expression":"Derp"
+			},
+			"1":
+			{
+				"speaker":"Ghost",
+				"text":"Not that it matters much now.",
+				"expression":"Happy"
+			}
+		},
+		"poster":
+		{
+			"length":4,
+			"next":"trash",
+			"0":
+			{
+				"speaker":"Ghost",
+				"text":"Ah yes, Hackers! The seminal masterpiece of the 1990's, it delved deeply into the implications of rising technological prowess in a traditional society and explored the indomitable human spirit.",
+				"expression":"Happy"
+			},
+			"1":
+			{
+				"speaker":"Ghost",
+				"text":"Not to mention a stunning soundtrack by Simon Boswell, composed largely of hardcore electronica, techno, and house tracks characterizing the era.",
+				"expression":"Ooo"
+			},
+			"2":
+			{
+				"speaker":"Ghost",
+				"text":"Never was there a finer work of filmmaking.",
+				"expression":"Happy"
+			},
+			"3":
+			{
+				"speaker":"Ghost",
+				"text":"It made me the ghost I am today!",
+				"expression":"Happy"
+			}
+		},
+		"computer":
+		{
+			"length":3,
+			"next":"computer",
+			"0":
+			{
+				"speaker":"Ghost",
+				"text":"Hey, it's not so bad. Now that I'm a ghost, I can't be caught! I can be traced though - I'll have to stop any traces with my handy scripts.",
+				"expression":"Happy"
+			},
+			"1":
+			{
+				"speaker":"Ghost",
+				"text":"I can totally rig this up with ghost control. Which is definitely a thing. Just one sec...",
+				"expression":"Grr"
+			},
+			"2":
+			{
+				"speaker":"Ghost",
+				"text":"Most excellent! Hack the planet!",
+				"expression":"Yeah"
+			}
+		},
+		"door":
+		{
+			"length":4,
+			"next":"door",
+			"0":
+			{
+				"speaker":"Ghost",
+				"text":"Dang. Looks like I'm locked in.",
+				"expression":"Grr"
+			},
+			"1":
+			{
+				"speaker":"Ghost",
+				"text":"I'll be haunting this room forever at this rate.",
+				"expression":"Normal"
+			},
+			"2":
+			{
+				"speaker":"Ghost",
+				"text":"...oooOOOOooOOOOoooOOO! oooOOOooOO!",
+				"expression":"Ooo"
+			},
+			"3":
+			{
+				"speaker":"Ghost",
+				"text":"Ok, yeah, that's pretty great.",
+				"expression":"Happy"
+			}
+		},
+		"fail":
+		{
+			"length":3,
+			"next":"none",
+			"0":
+			{
+				"speaker":"Computer",
+				"text":"BZZZT- Too many traces, hack aborted. Saving current wave.",
+				"expression":"Ooo"
+			},
+			"1":
+			{
+				"speaker":"Ghost",
+				"text":"Lame. My scripts were totally a match for those traces.",
+				"expression":"Gah"
+			},
+			"2":
+			{
+				"speaker":"Ghost",
+				"text":"Well, I guess I can start that wave again.",
+				"expression":"Normal"
+			}
+		},
+		"victory":
+		{
+			"length":3,
+			"next":"none",
+			"0":
+			{
+				"speaker":"Ghost",
+				"text":"All right! I hacked the whole world! That was easier than I thought.",
+				"expression":"Happy"
+			},
+			"1":
+			{
+				"speaker":"Police",
+				"text":"Freeze! Put your hands up! Get on the ground! Slowly!",
+				"expression":"Ooo"
+			},
+			"2":
+			{
+				"speaker":"Ghost",
+				"text":"You'll never catch me alive!",
+				"expression":"Yeah"
+			}
+		}
+	}
+}

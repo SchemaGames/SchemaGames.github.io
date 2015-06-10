@@ -1,0 +1,21 @@
+<div class="small-block-grid-3" ng-if="manyGames()">
+	<div class="gamepreview panel" ng-repeat="game in gameslist">
+		<a href="/games?game={{game.game_title}}">
+			<img class="th radius" ng-src='../images/game_thumbs/{{game.thumbnail_name}}'>
+		</a>
+		<b>{{game.game_title}}</b>
+	</div>
+</div>
+<div class="small-block-grid-1 medium-block-grid-1 large-block-grid-1" ng-if="focusGame()">
+    <div class="panel gameframe">
+        <h3>{{gamedata.game_title}}</h3>
+        <div ng-style="{ 'position':'relative', 'height':'0', 'padding-bottom': (aspectRatio+'%') }">
+            <iframe class="game" ng-src="{{trustedUrl}}" sandbox="allow-same-origin allow-scripts"></iframe>
+        </div>
+    </div>
+    <div class="panel">
+        <h3>Posted by <span ng-repeat="username in gamedata.usernames"><span ng-show="(gamedata.usernames.length > 3) && (! $first)">,</span><span ng-show="(! $first) && $last"> and</span><span ng-show="! $first"> </span>{{username}}</span></h3>
+        <time datetime="{{gamedata.post_time}}">{{gamedata.post_time*1000 | date:'medium'}}</time>
+        <p>{{gamedata.game_description}}</p>
+    </div>
+</div>

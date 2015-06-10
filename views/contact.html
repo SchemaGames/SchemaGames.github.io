@@ -1,0 +1,38 @@
+<div ng-controller="ContactCtrl">
+<form novalidate name="contactSchema" class="contact-form schemaForm panel" role="form" ng-submit="sendForm()">
+    <div class="row">
+        <h3 class="small-3 large-3 columns">Contact Us</h3>
+    </div>
+    <div class="row">
+        <div class="small-2 large-2 columns">
+            <label for="email" class="right inline">Email</label>
+        </div>
+        <div class="small-10 large-10 columns">
+            <input type="email" id="email"  name="email" placeholder="Email" ng-model="formInfo.email" ng-model-options="{ updateOn: 'mousedown blur' }" required>
+            <div ng-if="contactSchema.email.$dirty" ng-messages="contactSchema.email.$error">
+                <div ng-message="required">You gotta put an email in there!</div>
+                <div ng-message="email">That doesn't look like an email address...</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-2 large-2 columns">
+            <label for="message" class="right inline">Message</label>
+        </div>
+        <div class="small-10 large-10 columns">
+            <textarea type="text" id="message"  name="message" rows="7" placeholder="Message" ng-model="formInfo.message" ng-model-options="{ updateOn: 'mousedown blur' }" required></textarea>
+            <div ng-if="contactSchema.message.$dirty" ng-messages="contactSchema.message.$error">
+                <div ng-message="required">Put something in the message!</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-7 small-offset-2 large-7 large-offset-2 columns">
+            <div vc-recaptcha key="recaptchaKey" on-success="setResponse(response)"></div>
+        </div>
+        <div class="small-3 large-3 columns">
+            <button type="submit" class="small success right">Send</button>
+        </div>
+    </div>
+</form>
+</div>

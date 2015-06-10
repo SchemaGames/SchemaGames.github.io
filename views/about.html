@@ -1,0 +1,37 @@
+<div class="panel">
+    <h3>Roots</h3>
+    <p>Schema Games began as a small gaming and modding outfit. It has changed over the years into a proper game
+        company, albeit one just getting its feet wet.</p>
+</div>
+<div class="panel">
+    <h3>Philosophy</h3>
+    <p>We aim to make games and make them well. Here's how we go about it.
+        <ul class="schemalist">
+            <li>From all reports, crunch-time is bad. Hey, even long workweeks, or even workdays aren't always comfortable. Plus, in our connected and somewhat globalized world, people live in wildly different timezones. So we don't keep schedules. We work when we want to, and on what we want to.</li>
+            <li>We all own anything we make on an individual basis, and can open-source it or keep it to ourselves to whatever extent we find reasonable.</li>
+            <li>Education is important, and possibly the core of education is just trying lots of stuff and learning from that. So we put aside plenty of time for experimentation and side-projects, even if they won't yield anything tangible.</li>
+            <li>Getting stuff done is also important - and to get stuff done you need solid tools. Tools that are self-molded to supplement a developer's specific needs or wants are ideal, so we also craft small modular tools to augment our pipelines, and keep up to date on the best practices out there.</li>
+        </ul>
+    If these things make sense to you, maybe you'll enjoy our games. Or hey, you know what? You might even be someone we want to work with. If so, send us a line <a href="/contact">here</a>.
+    </p>
+</div>
+<div class="panel" >
+    <div>
+        <h3>Roster</h3>
+        <div ng-repeat="user in roster">
+            <div class="panel roster-entry">
+                <div class="row">
+                    <div class="small-6 large-6 columns">
+                        <h5>{{user.fullname}}</h5>
+                        <b>{{user.title}}</b>
+                    </div>
+                    <img class="portrait th small-2 large-2 columns right" ng-src='images/portraits/{{user.username}}/{{user.default_portrait}}'>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel">
+    <h3>FAQ</h3>
+    <p>People don't ask us very many questions yet. If you have one though, you can ask it <a href="/contact">here</a></p>
+</div>

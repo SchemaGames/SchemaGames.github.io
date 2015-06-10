@@ -1,0 +1,143 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <title>Schema Games</title>
+    <base href="/">
+    <meta name="description" content="Schema Games is an independent Colorado-based video game studio.">
+    <meta name="keywords" content="video games,games,independent,game design, schema games">
+    <meta name="viewport" content="width=device-width">
+    <meta name="fragment" content="!">
+    <link rel="stylesheet" href="deps/foundation/css/foundation.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Karla:700,400,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='deps/highlight/styles/docco.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles/animations.css" />
+    <link rel="stylesheet" href="styles/schema.css">
+</head>
+<body ng-app="SchemaApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="container-fluid ng-cloak" ng-cloak>
+		<div class="row header fullWidth" ng-controller="HeaderCtrl">
+			<a href="/" >
+				<div class="small-12 large-12 small-uncentered large-centered columns" ng-style="{
+				'background': 'url(images/schemabanner.png) no-repeat, url(images/caption/'+caption+'.png) no-repeat', 'background-size': 'contain, 82% 30%',
+				'background-position': 'left top, right bottom','max-width': '75rem'
+				}">
+                    <img src="images/schemabanner.png" style="visibility:hidden"/>
+				</div>
+			</a>
+		</div>
+
+        <div ng-controller="NotifyCtrl">
+            <div class="notification ng-cloak" ng-cloak ng-repeat="notification in notifications">
+                    <div class="notification-inner">
+                    {{notification.message}}
+                </div>
+                <span class="notification-close" ng-click="closeNotification($index)"></span>
+            </div>
+        </div>
+
+        <div class="row ng-cloak fullWidth" ng-cloak>
+            <nav class="top panel radius small-12 large-12 columns" ng-controller="NavbarCtrl">
+                <ul class="top-nav" role="navigation">
+                    <li class="" ng-repeat="navlink in navlinks">
+                        <a class="" ng-style="setTopNav($index)" href="{{navlink.link}}"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+		<div class="row fullWidth">
+			<nav class="side panel radius small-3 large-3 columns ng-cloak" ng-cloak ng-controller="NavbarCtrl">
+				<ul class="side-nav" role="navigation">
+					<li class="row" ng-repeat="navlink in navlinks">
+						<img class="small-2 large-2 columns navdot" ng-style="setDot($index)" src="images/dot.png">
+						<a class="small-10 large-10 columns" ng-style="setNav($index)" href="{{navlink.link}}"></a>
+					</li>
+				</ul>
+			</nav>
+            <noscript class="panel small-9 large-9 columns">This website uses JavaScript! If you'd like to view it, please enable that ol' thing. We aren't up to anything nefarious, we swear. Fingers uncrossed and everything.</noscript>
+			<div class="main small-9 large-9 columns end" ng-view=""></div>
+		</div>
+		
+		<div class="ng-cloak footer row fullWidth" ng-cloak>
+			<div class="small-4 large-4 columns">
+				<p><span>&copy</span> 2015 Schema Games</p>
+			</div>
+            <ul class="inline-list small-4 large-4 columns right">
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/contact">Join Us</a></li>
+                <li><a href="/press">Press</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
+                <li><a href="/sitemap">Sitemap</a></li>
+            </ul>
+		</div>
+    </div>
+
+    <script src="deps/showdown/Showdown.min.js"></script>
+    <script src="deps/jquery/dist/jquery.min.js"></script>
+    <script src="deps/angular/angular.min.js"></script>
+    <script src="deps/angular-resource/angular-resource.min.js"></script>
+    <script src="deps/angular-cookies/angular-cookies.min.js"></script>
+    <script src="deps/angular-messages/angular-messages.min.js"></script>
+    <script src="deps/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="deps/angular-animate/angular-animate.min.js"></script>
+    <script src="deps/angular-touch/angular-touch.min.js"></script>
+    <script src="deps/angular-route/angular-route.min.js"></script>
+
+    <script src="deps/angulartics/dist/angulartics.min.js"></script>
+    <script src="deps/angulartics/dist/angulartics-piwik.min.js"></script>
+
+    <script src="deps/highlight/highlight.pack.js"></script>
+
+    <script src='https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit' defer></script>
+    <script src="deps/angular-recaptcha/angular-recaptcha.min.js"></script>
+
+    <script src="scripts/app.js"></script>
+
+    <script src="scripts/filters/highlight.js"></script>
+    <script src="scripts/services/notify.js"></script>
+    <script src="scripts/directives/showdown.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+	<script src="scripts/controllers/header.js"></script>
+    <script src="scripts/controllers/notification.js"></script>
+    <script src="scripts/controllers/navbar.js"></script>
+    <script src="scripts/controllers/games.js"></script>
+	<script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/blog.js"></script>
+    <script src="scripts/controllers/archive.js"></script>
+    <script src="scripts/controllers/things.js"></script>
+    <script src="scripts/controllers/contact.js"></script>
+    <script src="scripts/controllers/press.js"></script>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://schemagames.com",
+      "logo": "http://schemagames.com/images/schemalogo.png"
+    }
+</script>
+<!-- End Structured Data -->
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//piwik.schemagames.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//piwik.schemagames.com/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+</body>
+</html>
