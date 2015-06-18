@@ -178,7 +178,10 @@ label > input{ width: 100% }
         width: 100%;
     }
 }
-@media screen and (min-width: 64.063em){
+@media screen and (min-width: 75em){
+    nav.side{
+        display: inline-block;
+    }
     nav.top{
         display: none;
     }
