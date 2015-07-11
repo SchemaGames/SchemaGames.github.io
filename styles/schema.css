@@ -167,7 +167,7 @@ label{
 label > input{ width: 100% }
 
 /*Media query to handle navbar placement for small resolutions*/
-@media screen and (max-width: 64em){
+@media screen and (max-width: 75em){
     nav.side{
         display: none;
     }
