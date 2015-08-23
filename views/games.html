@@ -9,8 +9,11 @@
 <div class="small-block-grid-1 medium-block-grid-1 large-block-grid-1" ng-if="focusGame()">
     <div class="panel gameframe">
         <h3>{{gamedata.game_title}}</h3>
-        <div ng-style="{ 'position':'relative', 'height':'0', 'padding-bottom': (aspectRatio+'%') }">
+        <div ng-show={{gamedata.embedded}} ng-style="{ 'position':'relative', 'height':'0', 'padding-bottom': (aspectRatio+'%') }">
             <iframe class="game" ng-src="{{trustedUrl}}" sandbox="allow-same-origin allow-scripts"></iframe>
+        </div>
+        <div ng-hide={{gamedata.embedded}}>
+            <ng-include src="trustedUrl">
         </div>
     </div>
     <div class="panel">
