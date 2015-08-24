@@ -7,13 +7,13 @@
 	</div>
 </div>
 <div class="small-block-grid-1 medium-block-grid-1 large-block-grid-1" ng-if="focusGame()">
-    <div ng-show={{gamedata.embedded}} class="panel gameframe">
+    <div ng-if="gamedata.embedded" class="panel gameframe">
         <h3>{{gamedata.game_title}}</h3>
         <div ng-style="{ 'position':'relative', 'height':'0', 'padding-bottom': (aspectRatio+'%') }">
             <iframe class="game" ng-src="{{trustedUrl}}" sandbox="allow-same-origin allow-scripts"></iframe>
         </div>
     </div>
-    <div ng-hide={{gamedata.embedded}} class="panel">
+    <div ng-if="!gamedata.embedded" class="panel">
         <h3>{{gamedata.game_title}}</h3>
         <ng-include src="trustedUrl">
     </div>
