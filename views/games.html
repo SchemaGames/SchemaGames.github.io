@@ -1,6 +1,6 @@
 <div class="panel" ng-if="manyGames()">
     <div class="row" ng-if="gameTypePresent('sig')">
-        <h2 class="row">Signature Games</h2>
+        <h3>Signature Games</h3>
         <div class="small-block-grid-3" >
         	<div class="gamepreview panel" ng-repeat="game in gameslist | filter:{ game_type: 'sig' }">
         		<a href="/games?game={{game.game_title}}">
@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="row" ng-if="gameTypePresent('jam')">
-        <h2 class="row">Jam Games</h2>
+        <h3>Jam Games</h3>
         <div class="small-block-grid-3" >
             <div class="gamepreview panel" ng-repeat="game in gameslist | filter:{ game_type: 'jam' }">
                 <a href="/games?game={{game.game_title}}">
