@@ -29,34 +29,34 @@ if(!isset($game)){
     if(isset($older))
     {
         //Query for up to NUM_GAMES_PER_PAGE of the most recent articles older than the referrer's
-        $sql = 'SELECT game_title, UNIX_TIMESTAMP(post_time) as post_time, thumbnail_name FROM games'
+        $sql = 'SELECT game_title, UNIX_TIMESTAMP(post_time) as post_time, thumbnail_name, game_type FROM games'
             . ' WHERE UNIX_TIMESTAMP(post_time) < ? ORDER BY post_time DESC LIMIT ?';
         if($stmt = $conn->prepare($sql)){
             $stmt->bind_param('ii', $older,$num_games_per_page);
             $result = $stmt->execute();
-            $stmt->bind_result($game_title,$post_time,$thumbnail_name);
+            $stmt->bind_result($game_title,$post_time,$thumbnail_name,$game_type);
         }
     }
     else if(isset($newer))
     {
         //Query for up to NUM_GAMES_PER_PAGE of the most recent articles newer than the referrer's
-        $sql = 'SELECT game_title, UNIX_TIMESTAMP(post_time) as post_time, thumbnail_name FROM games'
+        $sql = 'SELECT game_title, UNIX_TIMESTAMP(post_time) as post_time, thumbnail_name, game_type FROM games'
             . ' WHERE UNIX_TIMESTAMP(post_time) > ? ORDER BY post_time DESC LIMIT ?';
         if($stmt = $conn->prepare($sql)){
             $stmt->bind_param('ii', $newer,$num_games_per_page);
             $result = $stmt->execute();
-            $stmt->bind_result($game_title,$post_time,$thumbnail_name);
+            $stmt->bind_result($game_title,$post_time,$thumbnail_name,$game_type);
         }
     }
     else
     {
         //No relevant options - get the NUM_GAMES_PER_PAGE most recent games
-        $sql = 'SELECT game_title, UNIX_TIMESTAMP(post_time) as post_time, thumbnail_name FROM games'
+        $sql = 'SELECT game_title, UNIX_TIMESTAMP(post_time) as post_time, thumbnail_name, game_type FROM games'
             . ' ORDER BY post_time DESC LIMIT ?';
         if($stmt = $conn->prepare($sql)){
             $stmt->bind_param('i',$num_games_per_page);
             $result = $stmt->execute();
-            $stmt->bind_result($game_title,$post_time,$thumbnail_name);
+            $stmt->bind_result($game_title,$post_time,$thumbnail_name,$game_type);
         }
     }
     //Check query
@@ -72,6 +72,7 @@ if(!isset($game)){
                 .'"game_title":"' . $game_title
                 .'","post_time":' . $post_time
                 .',"thumbnail_name":"' . $thumbnail_name
+                .'","game_type":"' . $game_type
                 .'"}');
             //Determine the time of the newest and oldest articles on the page
             if(!isset($newest) || $post_time > $newest){

@@ -35,6 +35,11 @@
 			$scope.isEmbedded = function (){
 				return ($scope.gamedata === 1);
 			};
+			$scope.gameTypePresent = function(gType){
+				return $scope.gameslist.some(function(game){
+					return (game.game_type == gType);
+				});
+			}
 
 			$scope.setUrl = function (url) {
 				$scope.trustedUrl = $sce.trustAsResourceUrl(url);

@@ -1,10 +1,26 @@
-<div class="small-block-grid-3" ng-if="manyGames()">
-	<div class="gamepreview panel" ng-repeat="game in gameslist">
-		<a href="/games?game={{game.game_title}}">
-			<img class="th radius" ng-src='../images/game_thumbs/{{game.thumbnail_name}}'>
-		</a>
-		<b>{{game.game_title}}</b>
-	</div>
+<div class="panel" ng-if="manyGames()">
+    <div class="row" ng-if="gameTypePresent('sig')">
+        <h2 class="row">Signature Games</h2>
+        <div class="small-block-grid-3" >
+        	<div class="gamepreview panel" ng-repeat="game in gameslist | filter:{ game_type: 'sig' }">
+        		<a href="/games?game={{game.game_title}}">
+        			<img class="th radius" ng-src='../images/game_thumbs/{{game.thumbnail_name}}'>
+        		</a>
+        		<b>{{game.game_title}}</b>
+        	</div>
+        </div>
+    </div>
+    <div class="row" ng-if="gameTypePresent('jam')">
+        <h2 class="row">Jam Games</h2>
+        <div class="small-block-grid-3" >
+            <div class="gamepreview panel" ng-repeat="game in gameslist | filter:{ game_type: 'jam' }">
+                <a href="/games?game={{game.game_title}}">
+                    <img class="th radius" ng-src='../images/game_thumbs/{{game.thumbnail_name}}'>
+                </a>
+                <b>{{game.game_title}}</b>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="small-block-grid-1 medium-block-grid-1 large-block-grid-1" ng-if="focusGame()">
     <div ng-if="gamedata.embedded" class="panel gameframe">
