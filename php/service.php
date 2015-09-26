@@ -68,6 +68,23 @@ abstract class SchemaGamesService
             // One row at a time, copy data to the output array
             while($row = $stmt->fetch(PDO::FETCH_ASSOC))
             {
+                /*
+                * When a cell is an array, parse it out as such
+                *
+                * We denote array by starting the field value as 'array|'
+                * Cells are delimited by the vertical bar ('|') character
+                */
+                foreach($row as $colName => $cell)
+                {
+                    if(is_string($cell) && substr($cell,0,6) == "array|")
+                    {
+                        $items = explode('|',$cell);
+                        // Remove the first element, 'array'
+                        array_shift($items);
+                        $row[$colName] = $items;
+                        unset($items);
+                    }
+                }
                 // Optional output mapping changes field names
                 if($remapOutputs)
                 {
@@ -96,14 +113,37 @@ abstract class SchemaGamesService
      * 
      * @var array $execOutput   Output of the execute step (tabular data array)
      */
-    protected function render($execOutput)
+    protected function render($execOutput,array $metadata = NULL, $simple = false)
     {
         header('Content-Type: application/json');
-        $num_rows = count($execOutput);
-        $dataTree = array(
-            "total_rows" => $num_rows,
-            "rows" => $execOutput
-            );
-        echo json_encode($dataTree);
+        
+        if($simple)
+        {
+            if(count($execOutput) == 0)
+            {
+                $dataTree = array();
+            }
+            else if(count($execOutput) == 1)
+            {
+                $dataTree = $execOutput[0];
+            }
+            else
+            {
+                $dataTree = $execOutput;
+            }
+        }
+        else
+        {
+            $num_rows = count($execOutput);
+            $dataTree = array(
+                "total_rows" => $num_rows,
+                "rows" => $execOutput
+                );
+            if(isset($metadata))
+            {
+                $dataTree["meta"] = $metadata;
+            }
+        }
+        echo json_encode($dataTree,JSON_NUMERIC_CHECK);
     }
 }
