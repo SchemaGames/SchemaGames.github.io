@@ -18,7 +18,7 @@ abstract class SchemaGamesService
      * @param array|null $outputMapping   Optional array of ("sql_column_name" => "new_field_name") pairs
      * @return array                      Array containing output row arrays with (column => data) pairs                 
      */
-    protected function query($sql, array $inputTypes, array $inputFields,array $outputMapping = NULL)
+    protected function query($sql, array $inputTypes = NULL, array $inputFields = NULL,array $outputMapping = NULL)
     {
         // Begin by connecting to the SQL database
         try
