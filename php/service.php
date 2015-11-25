@@ -1,6 +1,6 @@
 <?php
 
-require_once 'mysqlauth2.php';
+require_once 'sqlauth.php';
 
 abstract class SchemaGamesService
 {
@@ -24,9 +24,9 @@ abstract class SchemaGamesService
         try
         {
             $pdo = new PDO(
-                'mysql:host=' . MySQLAuth::$servername . ';dbname=' . MySQLAuth::$dbname,
-                MySQLAuth::$username,
-                MySQLAuth::$password
+                'pgsql:' .
+                'user' . PgSQLAuth::$dbname . ';' .
+                'dbname=' . PgSQLAuth::$dbname
                 );
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
