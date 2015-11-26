@@ -19,9 +19,7 @@
             'ngRoute',
             'ngSanitize',
             'ngTouch',
-		    'vcRecaptcha',
-            'angulartics',
-            'angulartics.piwik'
+		    'vcRecaptcha'
         ])
         .config(function ($routeProvider, $locationProvider) {
             $locationProvider.html5Mode(true);

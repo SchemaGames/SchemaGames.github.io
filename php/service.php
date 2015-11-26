@@ -25,7 +25,7 @@ abstract class SchemaGamesService
         {
             $pdo = new PDO(
                 'pgsql:' .
-                'user' . PgSQLAuth::$dbname . ';' .
+                'user=' . PgSQLAuth::$dbname . ';' .
                 'dbname=' . PgSQLAuth::$dbname
                 );
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

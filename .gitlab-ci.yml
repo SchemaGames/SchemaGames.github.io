@@ -1,0 +1,26 @@
+variables:
+ DEPLOY_TO: "testsite" # website or testsite, for production deploy or test deploy respectively
+
+stages:
+ - build
+ - deploy
+
+minify_css:
+ type: build
+ script:
+  - cat `cat conf/css.conf` > combined.css
+  - cat combined.css > schemapp.css
+  - rm combined.css
+
+# Requires uglifyjs to succeed, get through npm (node)
+minify_js:
+ type: build
+ script:
+  - cat `cat conf/js.conf` > combined.js
+  - cat combined.js | uglifyjs --compress --comments --output schemapp.min.js
+  - rm combined.js
+
+deploy_files:
+ type: deploy
+ script:
+  - for file in `cat conf/deploy.conf`; do /bin/cp --parents -rf "$file" /var/www/$DEPLOY_TO/; done
