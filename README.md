@@ -26,4 +26,4 @@ The website uses Angular.js on the frontend to render the pages dynamically, and
 
 Games are embedded in iframes that pull in the game content as an embedded unit.
 "Things" operate in a similar style, with embedding of the html template containing each thing.
-Many pieces of the site are still a work in progress, but it is working in its current state
+Many pieces of the site are still a work in progress, but it is working in its current state.
