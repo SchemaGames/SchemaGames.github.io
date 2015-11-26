@@ -22,7 +22,7 @@ Of the subdomains supported, there are
 The website uses Angular.js on the frontend to render the pages dynamically, and php pages on the backend to serve data from the database layer below. In addition to the standard Angular.js libraries, there are plugins for:
 - An Angular.js directive for Markdown rendering, called "showdown"
 - Foundation.css libraries
-- A (currently unused) syntax highlighting package
+- A (currently unused but functional) syntax highlighting package
 
 Games are embedded in iframes that pull in the game content as an embedded unit.
 "Things" operate in a similar style, with embedding of the html template containing each thing.
