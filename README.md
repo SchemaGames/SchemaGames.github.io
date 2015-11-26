@@ -2,7 +2,7 @@
 
 This is the project for the Schema Games website. General architecture is outlined below:
 
-This is currently hosted on a CentOS 6 box living in the Atlantic.net cloud.
+This is currently hosted on a CentOS 6.7 box living in the Atlantic.net cloud.
 
 
 ## System
