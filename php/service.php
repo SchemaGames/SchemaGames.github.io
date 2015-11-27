@@ -23,18 +23,18 @@ abstract class SchemaGamesService
         // Begin by connecting to the SQL database
         try
         {
-            /*$pdo = new PDO(
-                'pgsql:' .
-                'user=' . PgSQLAuth::$dbname . ';' .
-                'dbname=' . PgSQLAuth::$dbname
-                );*/
             $pdo = new PDO(
+                'pgsql:' .
+                'user=' . PgSQLAuth::$username . ';' .
+                'dbname=' . PgSQLAuth::$dbname
+                );
+            /*$pdo = new PDO(
                 'mysql:' .
                 'host=' . MySQLAuth::$servername . ';' .
                 'dbname=' . MySQLAuth::$dbname,
                 MySQLAuth::$username,
                 MySQLAuth::$password
-                );
+                );*/
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         // On failed connection, throw error

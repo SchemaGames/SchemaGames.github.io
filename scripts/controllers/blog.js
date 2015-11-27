@@ -22,7 +22,7 @@ angular.module('SchemaApp')
 		.success(function (data) {
 			$scope.articleslist = data.rows;
 			//Set pagination
-			if($scope.articleslist.length > 0) {
+			if(typeof $scope.articleslist !== 'undefined' && $scope.articleslist.length > 0) {
 				var topTime = parseFloat($scope.articleslist[0].post_time) + 1;
 				var botTime = parseFloat($scope.articleslist[$scope.articleslist.length - 1].post_time) - 1;
 				$scope.setNewerLink(topTime);
