@@ -1,39 +1,13 @@
 variables:
  DEPLOY_TO: "testsite" # website or testsite, for production deploy or test deploy respectively
 
-cache:
- paths:
-  - schemapp.css
-  - schemapp.min.js 
-
-stages:
- - setup
- - build
- - deploy
-
-setup:
- type: setup
+build_and_deploy:
  script:
   - if [[ ! -x /usr/local/bin/uglifyjs ]]; then echo "UglifyJS not executable"; exit 1; fi
-  - rm -f conbined.js # Remove these if they exist
-  - rm -f combined.css
-
-minify_css:
- type: build
- script:
   - for file in `cat conf/css.conf`; do (cat "$file"; echo) >> combined.css; done # Ensures newline separation
   - cat combined.css > schemapp.css # Future line for true minification
   - rm combined.css
-
-# Requires uglifyjs to succeed, get through npm (node)
-minify_js:
- type: build
- script:
   - for file in `cat conf/js.conf`; do (cat "$file"; echo) >> combined.js; done # Ensures newline separation
   - cat combined.js | /usr/local/bin/uglifyjs --compress --comments --output schemapp.min.js
   - rm combined.js
-
-deploy_files:
- type: deploy
- script:
   - for file in `cat conf/deploy.conf`; do /bin/cp --parents -rf "$file" /var/www/$DEPLOY_TO/; done
