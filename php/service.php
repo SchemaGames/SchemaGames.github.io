@@ -31,9 +31,9 @@ abstract class SchemaGamesService
             $pdo = new PDO(
                 'mysql:' .
                 'host=' . MySQLAuth::$servername . ';' .
-                'dbname=' . MySQLAuth::$dbname . ';' .
-                'username=' . MySQLAuth::$username . ';' .
-                'password=' . MySQLAuth::$password
+                'dbname=' . MySQLAuth::$dbname,
+                MySQLAuth::$username,
+                MySQLAuth::$password
                 );
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
