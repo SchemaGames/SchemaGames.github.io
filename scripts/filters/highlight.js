@@ -4,4 +4,4 @@ angular.module('SchemaApp')
     if (lang && input) return hljs.highlight(lang, input).value;
     return input;
   }
-}).filter('unsafe', function($sce) { return $sce.trustAsHtml; })
+}).filter('unsafe', function($sce) { return $sce.trustAsHtml; });
