@@ -8,6 +8,6 @@ build_and_deploy:
   - cat combined.css > schemapp.css # Future line for true minification
   - rm combined.css
   - for file in `cat conf/js.conf`; do (cat "$file"; echo) >> combined.js; done # Ensures newline separation
-  - cat combined.js | /usr/local/bin/uglifyjs --comments --output schemapp.min.js
+  - cat combined.js > schemapp.min.js #| /usr/local/bin/uglifyjs ---comments --output schemapp.min.js --source-map schemapp.min.js.map
   - rm combined.js
   - for file in `cat conf/deploy.conf`; do /bin/cp --parents -rf "$file" /var/www/$DEPLOY_TO/; done
