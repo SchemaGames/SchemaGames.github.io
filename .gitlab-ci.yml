@@ -1,6 +1,11 @@
 variables:
  DEPLOY_TO: "testsite" # website or testsite, for production deploy or test deploy respectively
 
+cache:
+ paths:
+  - schemapp.css
+  - schemapp.min.js 
+
 stages:
  - setup
  - build
