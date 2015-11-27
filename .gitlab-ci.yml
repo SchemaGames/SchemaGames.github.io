@@ -10,8 +10,8 @@ setup:
  type: setup
  script:
   - if [[ ! -x /usr/local/bin/uglifyjs ]]; then echo "UglifyJS not executable"; exit 1; fi
-  - rm conbined.js
-  - rm combined.css
+  - rm -f conbined.js # Remove these if they exist
+  - rm -f combined.css
 
 minify_css:
  type: build
