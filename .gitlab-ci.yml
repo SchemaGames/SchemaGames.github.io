@@ -6,23 +6,25 @@ stages:
  - build
  - deploy
 
-ensure_dependencies_available:
+setup:
  type: setup
  script:
   - if [[ ! -x /usr/local/bin/uglifyjs ]]; then echo "UglifyJS not executable"; exit 1; fi
+  - rm conbined.js
+  - rm combined.css
 
 minify_css:
  type: build
  script:
-  - cat `cat conf/css.conf` > combined.css
-  - cat combined.css > schemapp.css
+  - for file in `cat conf/css.conf`; do (cat "$file"; echo) >> combined.css; done # Ensures newline separation
+  - cat combined.css > schemapp.css # Future line for true minification
   - rm combined.css
 
 # Requires uglifyjs to succeed, get through npm (node)
 minify_js:
  type: build
  script:
-  - cat `cat conf/js.conf` > combined.js
+  - for file in `cat conf/js.conf`; do (cat "$file"; echo) >> combined.js; done # Ensures newline separation
   - cat combined.js | /usr/local/bin/uglifyjs --compress --comments --output schemapp.min.js
   - rm combined.js
 
