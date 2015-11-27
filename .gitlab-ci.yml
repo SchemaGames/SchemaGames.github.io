@@ -2,8 +2,14 @@ variables:
  DEPLOY_TO: "testsite" # website or testsite, for production deploy or test deploy respectively
 
 stages:
+ - setup
  - build
  - deploy
+
+ensure_dependencies_available:
+ type: setup
+ script:
+  - if [[ ! -x /usr/local/bin/uglifyjs ]]; echo "UglifyJS not executable"; exit 1; fi
 
 minify_css:
  type: build
@@ -17,7 +23,7 @@ minify_js:
  type: build
  script:
   - cat `cat conf/js.conf` > combined.js
-  - cat combined.js | uglifyjs --compress --comments --output schemapp.min.js
+  - cat combined.js | /usr/local/bin/uglifyjs --compress --comments --output schemapp.min.js
   - rm combined.js
 
 deploy_files:
