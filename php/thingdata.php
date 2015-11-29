@@ -26,7 +26,7 @@ SELECT
     thing_id,
     thing_name,
     thing_type,
-    extract(epoch as post_time) as post_time,
+    extract(epoch from post_time) as post_time,
     nickname,
     default_portrait as portrait
 FROM things
