@@ -33,7 +33,7 @@ FROM things
     INNER JOIN users
         USING (user_id)
 ORDER BY post_time DESC
-LIMIT ?'
+LIMIT ?
 SQL;
                 $inputTypes = array(PDO::PARAM_INT);
                 $inputFields = array($num_things_per_page);
