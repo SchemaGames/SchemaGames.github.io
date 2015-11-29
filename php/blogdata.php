@@ -25,7 +25,7 @@ SELECT
     article_text
 FROM articles
     INNER JOIN users
-        ON articles.user = users.user_id
+        USING (user_id)
 WHERE extract(epoch FROM post_time) < ?
 ORDER BY post_time DESC
 LIMIT ?
@@ -44,7 +44,7 @@ SELECT
     article_text
 FROM articles
     INNER JOIN users
-        ON articles.user_id = users.user_id
+        USING (user_id)
 WHERE extract(epoch FROM post_time) > ?
 ORDER BY post_time DESC
 LIMIT ?
@@ -63,7 +63,7 @@ SELECT
     article_text
 FROM articles
     INNER JOIN users
-        ON articles.user_id = users.user_id
+        USING (user_id)
 ORDER BY post_time DESC
 LIMIT ?
 SQL;

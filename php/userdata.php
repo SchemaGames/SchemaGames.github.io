@@ -6,7 +6,7 @@ class UserService extends SchemaGamesService
 {
     public function run()
     {
-        $sql = 'SELECT user_id, username FROM users';
+        $sql = 'SELECT user_id, nickname FROM users';
         $resultSet = $this->query($sql);
         $this->render($resultSet);
     }

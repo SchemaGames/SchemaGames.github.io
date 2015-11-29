@@ -21,33 +21,71 @@ class GameService extends SchemaGamesService
 
             if(isset($older))
             {
-                $sql = 'SELECT game_title, UNIX_TIMESTAMP(post_time) as post_time, thumbnail_name, game_type FROM games'
-                    . ' WHERE UNIX_TIMESTAMP(post_time) < ? ORDER BY post_time DESC LIMIT ?';
+                $sql = <<<'SQL'
+SELECT
+    game_title,
+    extract(epoch from post_time) as post_time,
+    thumbnail_name,
+    game_type
+FROM games
+WHERE UNIX_TIMESTAMP(post_time) < ?
+ORDER BY post_time DESC
+LIMIT ?
+SQL;
                 $inputTypes = array(PDO::PARAM_INT,PDO::PARAM_INT);
                 $inputFields = array($older,$num_games_per_page);
             }
             else if(isset($newer))
             {
-                $sql = 'SELECT game_title, UNIX_TIMESTAMP(post_time) as post_time, thumbnail_name, game_type FROM games'
-                    . ' WHERE UNIX_TIMESTAMP(post_time) > ? ORDER BY post_time DESC LIMIT ?';
+                $sql = <<<'SQL'
+SELECT
+    game_title,
+    extract(epoch from post_time) as post_time,
+    thumbnail_name,
+    game_type
+FROM games
+WHERE UNIX_TIMESTAMP(post_time) > ?
+ORDER BY post_time DESC
+LIMIT ?
+SQL;
                 $inputTypes = array(PDO::PARAM_INT,PDO::PARAM_INT);
                 $inputFields = array($newer,$num_games_per_page);
             }
             else
             {
-                $sql = 'SELECT game_title, UNIX_TIMESTAMP(post_time) as post_time, thumbnail_name, game_type FROM games'
-                    . ' ORDER BY post_time DESC LIMIT ?';
+                $sql = <<<'SQL'
+SELECT
+    game_title,
+    extract(epoch from post_time) as post_time,
+    thumbnail_name,
+    game_type
+FROM games
+ORDER BY post_time DESC
+LIMIT ?
+SQL;
                 $inputTypes = array(PDO::PARAM_INT);
                 $inputFields = array($num_games_per_page);
             }
         }
         else
         {
-            $sql = 'SELECT CONCAT("array|",GROUP_CONCAT(username SEPARATOR "|")) as usernames, UNIX_TIMESTAMP(post_time) as post_time,'
-                 . ' game_title, embedded, aspect_height, aspect_width, game_description, game_link FROM users'
-                 . ' INNER JOIN (SELECT g.*,IFNULL(u.user_id,g.user) as user_ids FROM games AS g LEFT JOIN usergroups'
-                 . ' AS ug ON g.usergroup = ug.group_id LEFT JOIN users AS u ON ug.user_id = u.user_id) as uids'
-                 . ' ON user_id = uids.user_ids WHERE game_title = ? GROUP BY game_id;';
+            $sql = <<<'SQL'
+SELECT
+    COALESCE(group_name,nickname) as creator,
+    game_title,
+    extract(epoch from post_time) as post_time,
+    embedded,
+    aspect_height,
+    aspect_width,
+    game_description,
+    game_link
+FROM games
+    INNER JOIN users
+        USING (user_id)
+    LEFT JOIN groups
+        USING (group_id)
+WHERE game_title = ?
+SQL;
             $inputTypes = array(PDO::PARAM_STR);
             $inputFields = array($game);
         }

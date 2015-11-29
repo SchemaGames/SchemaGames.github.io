@@ -6,7 +6,7 @@ class RosterService extends SchemaGamesService
 {
     public function run()
     {
-        $sql = 'SELECT username, fullname, title, default_portrait FROM users';
+        $sql = 'SELECT nickname, fullname, title, default_portrait FROM users';
         $resultSet = $this->query($sql);
         $this->render($resultSet);
     }

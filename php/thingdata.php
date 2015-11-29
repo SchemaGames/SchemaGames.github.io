@@ -4,13 +4,6 @@ require_once 'service.php';
 
 class ThingService extends SchemaGamesService
 {
-    protected static $thingtypes = array(
-        "writings" => 0,
-        "music" => 1,
-        "comics" => 2,
-        "art" => 3,
-        "tutorials" => 4
-    );
 
     public function run()
     {
@@ -28,34 +21,66 @@ class ThingService extends SchemaGamesService
             if(!isset($type))
             {
                 //No type is set, so all of the things are being queried.
-                $sql = 'SELECT thing_id, thing_name, thing_type, UNIX_TIMESTAMP(post_time) as post_time, username, default_portrait as portrait'
-                    . ' FROM things INNER JOIN users ON users.user_id = things.user'
-                    . ' ORDER BY post_time DESC LIMIT ?';
+                $sql = <<<'SQL'
+SELECT 
+    thing_id,
+    thing_name,
+    thing_type,
+    extract(epoch as post_time) as post_time,
+    nickname,
+    default_portrait as portrait
+FROM things
+    INNER JOIN users
+        USING (user_id)
+ORDER BY post_time DESC
+LIMIT ?';
+SQL;
                 $inputTypes = array(PDO::PARAM_INT);
                 $inputFields = array($num_things_per_page);
             }
             else
             {
                 //A type is set, get a list of things of that type
-                $sql = 'SELECT thing_id, thing_name, thing_type, UNIX_TIMESTAMP(post_time) as post_time, username, default_portrait as portrait'
-                    . ' FROM things INNER JOIN users ON users.user_id = things.user'
-                    . ' WHERE thing_type = ?'
-                    . ' ORDER BY post_time DESC LIMIT ?';
+                $sql = <<<'SQL'
+SELECT
+    thing_id,
+    thing_name,
+    thing_type,
+    extract(epoch from post_time) as post_time,
+    nickname,
+    default_portrait as portrait
+FROM things
+    INNER JOIN users
+        USING (user_id)
+WHERE thing_type = ?
+ORDER BY post_time DESC
+LIMIT ?
+SQL;
                 $inputTypes = array(PDO::PARAM_INT,PDO::PARAM_INT);
-                $inputFields = array(self::$thingtypes[$type],$num_things_per_page);
+                $inputFields = array($type,$num_things_per_page);
             }
         }
         else
         {
             //A thing has been chosen by setting an id - obtain information to display it
-            $sql = 'SELECT username, UNIX_TIMESTAMP(post_time) as post_time, thing_name, thing_type, content_url'
-                . ' FROM things'
-                . ' INNER JOIN users on users.user_id=things.user'
-                . ' WHERE thing_id = ?';
+            $sql = <<<'SQL'
+SELECT
+    thing_name,
+    thing_type,
+    extract(epoch from post_time) as post_time,
+    nickname,
+    content_url
+FROM things
+    INNER JOIN users
+        USING (user_id)
+WHERE thing_id = ?
+SQL;
             $inputTypes = array(PDO::PARAM_INT);
             $inputFields = array($id);
         }
+
         $resultSet = $this->query($sql,$inputTypes,$inputFields);
+        
         if(isset($id))
         {
             $this->render($resultSet,NULL,true);
