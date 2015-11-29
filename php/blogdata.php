@@ -16,24 +16,57 @@ class BlogService extends SchemaGamesService
         
         if(isset($older))
         {
-            $sql = 'SELECT article_title, users.username, portrait_name, UNIX_TIMESTAMP(post_time) as post_time,article_text'
-                . ' FROM articles INNER JOIN users ON articles.user = users.user_id WHERE UNIX_TIMESTAMP(post_time) < ?'
-                . ' ORDER BY post_time DESC LIMIT ?';
+            $sql = <<<'SQL'
+SELECT
+    article_title,
+    users.nickname,
+    portrait_name,
+    extract(epoch FROM post_time) as post_time,
+    article_text
+FROM articles
+    INNER JOIN users
+        ON articles.user = users.user_id
+WHERE extract(epoch FROM post_time) < ?
+ORDER BY post_time DESC
+LIMIT ?
+SQL;
             $inputTypes = array(PDO::PARAM_INT,PDO::PARAM_INT);
             $inputFields = array($older,$num_articles_per_page);
         }
         else if(isset($newer))
         {
-            $sql = 'SELECT article_title, users.username, portrait_name, UNIX_TIMESTAMP(post_time) as post_time, article_text'
-                . ' FROM articles INNER JOIN users ON articles.user = users.user_id WHERE UNIX_TIMESTAMP(post_time) > ?'
-                . ' ORDER BY post_time DESC LIMIT ?';
+            $sql = <<<'SQL'
+SELECT
+    article_title,
+    users.nickname,
+    portrait_name,
+    extract(epoch FROM post_time) as post_time,
+    article_text
+FROM articles
+    INNER JOIN users
+        ON articles.user_id = users.user_id
+WHERE extract(epoch FROM post_time) > ?
+ORDER BY post_time DESC
+LIMIT ?
+SQL;
             $inputTypes = array(PDO::PARAM_INT,PDO::PARAM_INT);
             $inputFields = array($newer,$num_articles_per_page);
         }
         else
         {
-            $sql = 'SELECT article_title, users.username, portrait_name, UNIX_TIMESTAMP(post_time) as post_time, article_text'
-                . ' FROM articles INNER JOIN users ON articles.user = users.user_id ORDER BY post_time DESC LIMIT ?';
+            $sql = <<<'SQL'
+SELECT
+    article_title,
+    users.nickname,
+    portrait_name,
+    extract(epoch FROM post_time) as post_time,
+    article_text
+FROM articles
+    INNER JOIN users
+        ON articles.user_id = users.user_id
+ORDER BY post_time DESC
+LIMIT ?
+SQL;
             $inputTypes = array(PDO::PARAM_INT);
             $inputFields = array($num_articles_per_page);
         }
