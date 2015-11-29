@@ -34,7 +34,7 @@
         <ng-include src="trustedUrl">
     </div>
     <div class="panel">
-        <h3>Posted by <span ng-repeat="username in gamedata.usernames"><span ng-show="(gamedata.usernames.length > 3) && (! $first)">,</span><span ng-show="(! $first) && $last"> and</span><span ng-show="! $first"> </span>{{username}}</span></h3>
+        <h3>Posted by <span>{{gamedata.creator}}</span></h3>
         <time datetime="{{gamedata.post_time}}">{{gamedata.post_time*1000 | date:'medium'}}</time>
         <p>{{gamedata.game_description}}</p>
     </div>

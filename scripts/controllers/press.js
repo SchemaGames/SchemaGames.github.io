@@ -9,10 +9,10 @@
      * Controller of the SchemaApp
      */
     angular.module('SchemaApp')
-        .controller('PressCtrl', ["$scope","$http",function ($scope,$http) {
+        .controller('PressCtrl', ["$scope","$http","$location",function ($scope,$http,$location) {
 
             $scope.getRoster = function () {
-                $http.get('http://schemagames.com/rosterdata.php')
+                $http.get($location.protocol()+'://'+$location.host()+'/rosterdata.php')
                     .success(function (data) {
                         $scope.roster = data.rows;
                     });

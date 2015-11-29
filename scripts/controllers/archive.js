@@ -9,7 +9,7 @@
 	 * Controller of the SchemaApp
 	 */
 	angular.module('SchemaApp')
-		.controller('ArchiveCtrl', ["$scope", "$http","$filter", function ($scope, $http) {
+		.controller('ArchiveCtrl', ["$scope", "$http","$location","$filter", function ($scope, $http,$location) {
 
 			$scope.noArticles="No articles match the search criteria. Dang!";
 			$scope.articleslist = [];
@@ -18,7 +18,7 @@
 
 			//DB requests
 			$scope.getArticles = function () {
-				$http.get('http://schemagames.com/blogdata.php?limit='+$scope.maxArticlesPerPage)
+				$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php?limit='+$scope.maxArticlesPerPage)
 					.success(function (data) {
 						$scope.articleslist = data.rows;
 						if ($scope.articleslist.length === 0) {

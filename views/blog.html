@@ -4,12 +4,12 @@
 			<div class="small-6 large-6 columns">
 				<h3 class="row">{{article.article_title}}</h3>
 				<br>
-				<h6 class="row">Posted by {{article.username}}</h6>
+				<h6 class="row">Posted by {{article.nickname}}</h6>
 				<h6 class="row">
 					<time datetime="{{article.post_time}}">{{article.post_time*1000 | date:'medium'}}</time>
 				</h6>
 			</div>
-			<img class="portrait th small-2 large-2 columns right" ng-src='images/portraits/{{article.username}}/{{article.portrait_name}}.png'>
+			<img class="portrait th small-2 large-2 columns right" ng-src='images/portraits/{{article.nickname}}/{{article.portrait_name}}.png'>
 		</div>
         <div class="row">
 		    <p class="text-justified">{{article.article_text}}</p>

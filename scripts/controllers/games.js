@@ -12,13 +12,13 @@
 		.controller('GamesCtrl', ["$scope","$http","$location","$sce",function ($scope, $http,$location,$sce) {
 
 			$scope.getGamesPreview = function () {
-				$http.get('http://schemagames.com/gamedata.php')
+				$http.get($location.protocol()+'://'+$location.host()+'/gamedata.php')
 					.success(function (data) {
 						$scope.gameslist = data.rows;
 					});
 			};
 			$scope.getGame = function (gamename) {
-				$http.get('http://schemagames.com/gamedata.php?game='+gamename)
+				$http.get($location.protocol()+'://'+$location.host()+'/gamedata.php?game='+gamename)
 					.success(function (data) {
 						$scope.gamedata = data;
 						$scope.aspectRatio = (data.aspect_height / data.aspect_width)*100;

@@ -10,11 +10,11 @@
 
 <div ng-show="showList">
     <ul class="schemalist">
-        <li ng-cloak class="row ng-cloak" ng-hide="filteredThingsList.length">Welp. This search didn't find any {{thingType}}.</li>
+        <li ng-cloak class="row ng-cloak" ng-hide="filteredThingsList.length">Welp. This search didn't find anything of type '{{thingType}}'.</li>
         <li class="row" ng-repeat="thing in filteredThingsList = (thingslist | filter : searchText | limitTo: maxThingsPerPage)">
             <a class="small-8 columns row" ng-href="/things?id={{thing.thing_id}}">
                 <img class="thingicon" ng-src="images/thingicons/icon_{{thing.thing_type}}.png" >
-                <img class="thingicon" ng-src='images/portraits/{{thing.username}}/{{thing.portrait}}'>
+                <img class="thingicon" ng-src='images/portraits/{{thing.nickname}}/{{thing.portrait}}'>
                 <b>{{thing.thing_name}}</b>
             </a>
             <p class="small-4 columns text-right">{{thing.post_time*1000 | date:'medium'}}</p>

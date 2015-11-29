@@ -9,20 +9,20 @@
 	 * Controller of the SchemaApp
 	 */
 	angular.module('SchemaApp')
-		.controller('ContactCtrl', ["$scope", "$http", "vcRecaptchaService","notify", function ($scope, $http, vcRecaptchaService, notify) {
+		.controller('ContactCtrl', ["$scope", "$http", "$location", "vcRecaptchaService","notify", function ($scope, $http, $location, vcRecaptchaService, notify) {
 			$scope.formInfo = {};
 			$scope.recaptchaKey = "6LfNnAETAAAAAPuK8eXXA6WgmZexg3-rNcMH9TtK";
 
 			$scope.sendForm = function() {
 				//Only send form if required fields are filled
 				if($scope.formInfo.email && $scope.formInfo.message && $scope.formInfo.recaptchaResponse){
-					$http.get('http://schemagames.com/checkrecaptcha.php?recaptcha='+$scope.formInfo.recaptchaResponse).
+					$http.get($location.protocol()+'://'+$location.host()+'/checkrecaptcha.php?recaptcha='+$scope.formInfo.recaptchaResponse).
 						success(function(data){
 							//Check whether the validation step succeeded
 							if(data.success === true){
 								$http({
 									method: 'POST',
-									url: 'http://schemagames.com/sendmail.php',
+									url: $location.protocol()+'://'+$location.host()+'/sendmail.php',
 									headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 									transformRequest: function(obj) {
 										var str = [];
@@ -53,7 +53,7 @@
 			};
 
 			$scope.sendMail = function() {
-				$http.post('http://schemagames.com/sendmail.php');
+				$http.post($location.protocol()+'://'+$location.host()+'/sendmail.php');
 			};
 
 			$scope.setResponse = function(res){

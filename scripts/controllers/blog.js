@@ -18,7 +18,7 @@ angular.module('SchemaApp')
   
 	//AJAX requests
 	$scope.getArticles = function() {
-		$http.get('http://schemagames.com/blogdata.php?limit='+$scope.articlesPerPage) 
+		$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php?limit='+$scope.articlesPerPage) 
 		.success(function (data) {
 			$scope.articleslist = data.rows;
 			//Set pagination
@@ -38,7 +38,7 @@ angular.module('SchemaApp')
 	};
 	$scope.getArticlesOlder = function(posttime) {
 		var newestPostTime = parseFloat(posttime);
-		$http.get('http://schemagames.com/blogdata.php?limit='+$scope.articlesPerPage+'&older='+newestPostTime)
+		$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php?limit='+$scope.articlesPerPage+'&older='+newestPostTime)
 		.success(function (data) {
 			$scope.articleslist = data.rows;
 			//Set pagination
@@ -58,7 +58,7 @@ angular.module('SchemaApp')
 	};
 	$scope.getArticlesNewer = function(posttime) {
 		var oldestPostTime = parseFloat(posttime);
-		$http.get('http://schemagames.com/blogdata.php?limit='+$scope.articlesPerPage+'&newer='+oldestPostTime)
+		$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php?limit='+$scope.articlesPerPage+'&newer='+oldestPostTime)
 		.success(function (data) {
 			$scope.articleslist = data.rows;
 			//Set pagination
@@ -77,7 +77,7 @@ angular.module('SchemaApp')
 		});
 	};
 	$scope.getArticleCount = function() {
-		$http.get('http://schemagames.com/blogdata.php')
+		$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php')
 			.success(function (data) {
 				$scope.articlecount = data.total_rows;
 			})
@@ -86,7 +86,7 @@ angular.module('SchemaApp')
 			});
 	};
 	$scope.setOlderLink = function(posttime) {
-		$http.get('http://schemagames.com/blogdata.php?older='+posttime)
+		$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php?older='+posttime)
 			.success(function (data) {
 				var articlecount;
 				if(data.rows.length !== 0) {
@@ -102,7 +102,7 @@ angular.module('SchemaApp')
 			});
 	};
 	$scope.setNewerLink = function(posttime) {
-		$http.get('http://schemagames.com/blogdata.php?newer='+posttime)
+		$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php?newer='+posttime)
 			.success(function (data) {
 				var articlecount;
 				if(data.rows.length !== 0) {
