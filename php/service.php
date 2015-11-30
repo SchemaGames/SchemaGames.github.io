@@ -1,6 +1,6 @@
 <?php
 
-require_once 'sqlauth.php';
+require_once '../private/sqlauth.php';
 
 abstract class SchemaGamesService
 {
@@ -18,23 +18,19 @@ abstract class SchemaGamesService
      * @param array|null $outputMapping   Optional array of ("sql_column_name" => "new_field_name") pairs
      * @return array                      Array containing output row arrays with (column => data) pairs                 
      */
-    protected function query($sql, array $inputTypes = NULL, array $inputFields = NULL,array $outputMapping = NULL)
+    protected function query($sql, array $inputTypes = NULL, array $inputFields = NULL, array $outputMapping = NULL, PDOSQLAuth $auth = NULL)
     {
+        // By default query the Schema Games website database
+        if($auth === NULL)
+        {
+            $auth = new SchemaDB();
+        }
+
         // Begin by connecting to the SQL database
         try
         {
-            $pdo = new PDO(
-                'pgsql:' .
-                'user=' . PgSQLAuth::$username . ';' .
-                'dbname=' . PgSQLAuth::$dbname
-                );
-            /*$pdo = new PDO(
-                'mysql:' .
-                'host=' . MySQLAuth::$servername . ';' .
-                'dbname=' . MySQLAuth::$dbname,
-                MySQLAuth::$username,
-                MySQLAuth::$password
-                );*/
+            $pdo = new PDO($auth->getDSN());
+            
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         // On failed connection, throw error
