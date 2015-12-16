@@ -20,10 +20,12 @@ class BlogService extends SchemaGamesService
 SELECT
     article_title,
     users.nickname,
-    portrait_name,
+    ports.portrait_file,
     extract(epoch FROM post_time) as post_time,
     article_text
 FROM articles
+    INNER JOIN portraits AS ports
+        USING (user_id,portrait_id)
     INNER JOIN users
         USING (user_id)
 WHERE extract(epoch FROM post_time) < ?
@@ -39,10 +41,12 @@ SQL;
 SELECT
     article_title,
     users.nickname,
-    portrait_name,
+    ports.portrait_file,
     extract(epoch FROM post_time) as post_time,
     article_text
 FROM articles
+    INNER JOIN portraits AS ports
+        USING (user_id,portrait_id)
     INNER JOIN users
         USING (user_id)
 WHERE extract(epoch FROM post_time) > ?
@@ -58,10 +62,12 @@ SQL;
 SELECT
     article_title,
     users.nickname,
-    portrait_name,
+    ports.portrait_file,
     extract(epoch FROM post_time) as post_time,
     article_text
 FROM articles
+    INNER JOIN portraits AS ports
+        USING (user_id,portrait_id)
     INNER JOIN users
         USING (user_id)
 ORDER BY post_time DESC
