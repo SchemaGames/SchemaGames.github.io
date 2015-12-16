@@ -13,8 +13,8 @@ SELECT
 	title,
 	ports.portrait_file
 FROM users
-	INNER JOIN portraits
-		ON users.default_portrait = portraits.portrait_id
+	INNER JOIN portraits AS ports
+		ON users.default_portrait = ports.portrait_id
 SQL;
         $resultSet = $this->query($sql);
         $this->render($resultSet);
