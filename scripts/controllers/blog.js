@@ -35,7 +35,6 @@
 					var botTime = parseFloat($scope.articleslist[$scope.articleslist.length - 1].post_time) - 1;
 					$scope.setNewerLink(topTime);
 					$scope.setOlderLink(botTime);
-					$scope.prepareText();
 				}
 				else {
 					$scope.noArticles="There are no blog entries on this date range";
@@ -56,7 +55,6 @@
 					var botTime = parseFloat($scope.articleslist[$scope.articleslist.length - 1].post_time) - 1;
 					$scope.setNewerLink(topTime);
 					$scope.setOlderLink(botTime);
-					$scope.prepareText();
 				}
 				else {
 					$scope.noArticles="There are no blog entries on this date range";
@@ -77,7 +75,6 @@
 					var botTime = parseFloat($scope.articleslist[$scope.articleslist.length - 1].post_time) - 1;
 					$scope.setNewerLink(topTime);
 					$scope.setOlderLink(botTime);
-					$scope.prepareText();
 				}
 				else {
 					$scope.noArticles="There are no blog entries on this date range";
