@@ -36,24 +36,32 @@ nav.panel {
 
 /* Main page section */
 .main {
-	padding-left: 25px;
-    -webkit-transition: 0.5s linear all;
-    -moz-transition: 0.5s linear all;
-    -o-transition: 0.5s linear all;
-    -ms-transition: 0.5s linear all;
-    transition: 0.5s linear all;
+    padding-left: 25px;
 }
-.main.ng-enter-active {
-    animation-delay: 0.5s;
+.main.ng-enter {
+    -webkit-transition: 0.2s ease-out all;
+    -moz-transition: 0.2s ease-out all;
+    -o-transition: 0.2s ease-out all;
+    -ms-transition: 0.2s ease-out all;
+    transition: 0.2s ease-out all;
+    transition-delay: 0.2s;
+}
+
+.main.ng-leave {
+    -webkit-transition: 0.2s ease-in all;
+    -moz-transition: 0.2s ease-in all;
+    -o-transition: 0.2s ease-in all;
+    -ms-transition: 0.2s ease-in all;
+    transition: 0.2s ease-in all;
 }
 
 .main.ng-enter,
 .main.ng-leave.ng-leave-active {
-  opacity:0;
+    opacity:0;
 }
 .main.ng-leave,
 .main.ng-enter.ng-enter-active {
-  opacity:1;
+    opacity:1;
 }
 
 /* Custom page footer */
