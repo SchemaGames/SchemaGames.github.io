@@ -43,6 +43,9 @@ nav.panel {
     -ms-transition: 0.5s linear all;
     transition: 0.5s linear all;
 }
+.main.ng-enter-active {
+    animation-delay: 0.5s;
+}
 
 .main.ng-enter,
 .main.ng-leave.ng-leave-active {
