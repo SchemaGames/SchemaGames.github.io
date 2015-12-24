@@ -37,11 +37,11 @@ nav.panel {
 /* Main page section */
 .main {
 	padding-left: 25px;
-}
-.main.ng-enter,
-.main.ng-leave {
-  -webkit-transition:0.5s linear all;
-  transition:0.5s linear all;
+    -webkit-transition: 0.5s linear all;
+    -moz-transition: 0.5s linear all;
+    -o-transition: 0.5s linear all;
+    -ms-transition: 0.5s linear all;
+    transition: 0.5s linear all;
 }
 
 .main.ng-enter,
