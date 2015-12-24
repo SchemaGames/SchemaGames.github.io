@@ -28,10 +28,12 @@ SELECT
     thing_type,
     extract(epoch from post_time) as post_time,
     nickname,
-    default_portrait as portrait
+    portrait_file as portrait
 FROM things
     INNER JOIN users
         USING (user_id)
+    INNER JOIN portraits AS ports
+        ON users.default_portrait = ports.portrait_id
 ORDER BY post_time DESC
 LIMIT ?
 SQL;
@@ -48,10 +50,12 @@ SELECT
     thing_type,
     extract(epoch from post_time) as post_time,
     nickname,
-    default_portrait as portrait
+    portrait_file as portrait
 FROM things
     INNER JOIN users
         USING (user_id)
+    INNER JOIN portraits AS ports
+        ON users.default_portrait = ports.portrait_id
 WHERE thing_type = ?
 ORDER BY post_time DESC
 LIMIT ?
