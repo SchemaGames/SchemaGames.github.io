@@ -34,8 +34,23 @@ nav.panel {
 	padding-bottom: 10px;
 }
 
+/* Main page section */
 .main {
 	padding-left: 25px;
+}
+.main.ng-enter,
+.main.ng-leave {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+}
+
+.main.ng-enter,
+.main.ng-leave.ng-leave-active {
+  opacity:0;
+}
+.main.ng-leave,
+.main.ng-enter.ng-enter-active {
+  opacity:1;
 }
 
 /* Custom page footer */
