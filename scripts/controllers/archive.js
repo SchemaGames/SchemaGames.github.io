@@ -13,20 +13,16 @@
 
 			$scope.noArticles="No articles match the search criteria. Dang!";
 			$scope.articleslist = [];
-			$scope.maxArticlesPerPage = 20;
+			$scope.maxArticlesPerPage = 20; // Currently unused, deprecate or rework
 			$scope.searchText = '';
 
 			//DB requests
 			$scope.getArticles = function () {
-				$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php?limit='+$scope.maxArticlesPerPage)
+				$http.get('https://api.schemagames.com/article?limit='+$scope.maxArticlesPerPage)
 					.success(function (data) {
-						$scope.articleslist = data.rows;
+						$scope.articleslist = data;
 						if ($scope.articleslist.length === 0) {
 							$scope.noArticles = "There are no blog entries in the archive";
-						}
-						else if($scope.articleslist.length > $scope.maxArticlesPerPage)
-						{
-							$scope.articleslist.push({"value":{"title":"...","post_time":0}});
 						}
 					})
 					.error(function () {

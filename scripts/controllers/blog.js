@@ -26,9 +26,9 @@
 		};
 		//AJAX requests
 		$scope.getArticles = function() {
-			$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php?limit='+$scope.articlesPerPage) 
+			$http.get('https://api.schemagames.com/article?limit='+$scope.articlesPerPage) 
 			.success(function (data) {
-				$scope.articleslist = data.rows;
+				$scope.articleslist = data;
 				//Set pagination
 				if(typeof $scope.articleslist !== 'undefined' && $scope.articleslist.length > 0) {
 					var topTime = parseFloat($scope.articleslist[0].post_time) + 1;
@@ -46,9 +46,9 @@
 		};
 		$scope.getArticlesOlder = function(posttime) {
 			var newestPostTime = parseFloat(posttime);
-			$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php?limit='+$scope.articlesPerPage+'&older='+newestPostTime)
+			$http.get('https://api.schemagames.com/article?limit='+$scope.articlesPerPage+'&older='+newestPostTime)
 			.success(function (data) {
-				$scope.articleslist = data.rows;
+				$scope.articleslist = data;
 				//Set pagination
 				if($scope.articleslist.length > 0) {
 					var topTime = parseFloat($scope.articleslist[0].post_time) + 1;
@@ -66,9 +66,9 @@
 		};
 		$scope.getArticlesNewer = function(posttime) {
 			var oldestPostTime = parseFloat(posttime);
-			$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php?limit='+$scope.articlesPerPage+'&newer='+oldestPostTime)
+			$http.get('https://api.schemagames.com/article?limit='+$scope.articlesPerPage+'&newer='+oldestPostTime)
 			.success(function (data) {
-				$scope.articleslist = data.rows;
+				$scope.articleslist = data;
 				//Set pagination
 				if($scope.articleslist.length > 0) {
 					var topTime = parseFloat($scope.articleslist[0].post_time) + 1;
@@ -84,21 +84,12 @@
 				$scope.articleslist = null;
 			});
 		};
-		$scope.getArticleCount = function() {
-			$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php')
-				.success(function (data) {
-					$scope.articlecount = data.total_rows;
-				})
-				.error(function (data) {
-					$scope.articlecount = 0;
-				});
-		};
 		$scope.setOlderLink = function(posttime) {
-			$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php?older='+posttime)
+			$http.get('https://api.schemagames.com/article?older='+posttime)
 				.success(function (data) {
 					var articlecount;
-					if(data.rows.length !== 0) {
-						articlecount = data.total_rows;
+					if(data.length !== 0) {
+						articlecount = data.length;
 					}
 					else {
 						articlecount = 0;
@@ -110,11 +101,11 @@
 				});
 		};
 		$scope.setNewerLink = function(posttime) {
-			$http.get($location.protocol()+'://'+$location.host()+'/blogdata.php?newer='+posttime)
+			$http.get('https://api.schemagames.com/article?newer='+posttime)
 				.success(function (data) {
 					var articlecount;
-					if(data.rows.length !== 0) {
-						articlecount = data.total_rows;
+					if(data.length !== 0) {
+						articlecount = data.length;
 					}
 					else {
 						articlecount = 0;

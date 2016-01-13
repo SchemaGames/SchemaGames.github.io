@@ -28,31 +28,31 @@ angular.module('SchemaApp')
     $scope.thingslist = [];
     $scope.thing = {};
     $scope.thingType = "things";
-    $scope.maxThingsPerPage = 10;
+    $scope.maxThingsPerPage = 20;
 
     $scope.getThingsList = function () {
         //No type specified, get all the things
         if($routeParams.thingType === undefined || $routeParams.thingType === "all")
         {
-            $http.get($location.protocol()+'://'+$location.host()+'/thingdata.php?limit='+$scope.maxThingsPerPage)
+            $http.get('https://api.schemagames.com/thing?limit='+$scope.maxThingsPerPage)
             .success(function (data) {
-                $scope.thingslist = data.rows;
+                $scope.thingslist = data;
                 $scope.showList = true;
             });
         }
         //Type specified, get things of that type
         else
         {
-            $http.get($location.protocol()+'://'+$location.host()+'/thingdata.php?type='+$routeParams.thingType+'&limit='+$scope.maxThingsPerPage)
+            $http.get('https://api.schemagames.com/thing?type='+$routeParams.thingType+'&limit='+$scope.maxThingsPerPage)
             .success(function (data) {
-                $scope.thingslist = data.rows;
+                $scope.thingslist = data;
                 $scope.showList = true;
             });
         }
     };
 
     $scope.getThingContent = function() {
-        $http.get($location.protocol()+'://'+$location.host()+'/thingdata.php?id='+$location.search().id)
+        $http.get('https://api.schemagames.com/thing?id='+$location.search().id)
             .success(function (data) {
                 $scope.thing = data;
             });

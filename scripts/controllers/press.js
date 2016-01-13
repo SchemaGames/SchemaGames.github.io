@@ -12,9 +12,9 @@
         .controller('PressCtrl', ["$scope","$http","$location",function ($scope,$http,$location) {
 
             $scope.getRoster = function () {
-                $http.get($location.protocol()+'://'+$location.host()+'/rosterdata.php')
+                $http.get('https://api.schemagames.com/roster')
                     .success(function (data) {
-                        $scope.roster = data.rows;
+                        $scope.roster = data;
                     });
             };
 

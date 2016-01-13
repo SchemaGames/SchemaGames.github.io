@@ -1,5 +1,5 @@
 variables:
- DEPLOY_TO: "website" # website or testsite, for production deploy or test deploy respectively
+ DEPLOY_TO: "testsite" # website or testsite, for production deploy or test deploy respectively
 
 build_and_deploy:
  script:
@@ -11,3 +11,4 @@ build_and_deploy:
   - cat combined.js > schemapp.min.js #| /usr/local/bin/uglifyjs ---comments --output schemapp.min.js --source-map schemapp.min.js.map
   - rm combined.js
   - for file in `cat conf/deploy.conf`; do /bin/cp --parents -rf "$file" /var/www/$DEPLOY_TO/; done
+  - /bin/cp -rf /opt/private/sqlauth.php  /var/www/$DEPLOY_TO/private/ # Copy all private PHP files in (not stored in usual repos)
