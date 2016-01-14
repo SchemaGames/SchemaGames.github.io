@@ -29,7 +29,7 @@
 			};
 
 			$scope.manyGames = function (){
-				return (typeof $scope.gameslist !== 'undefined');
+				return ($scope.gameslist.length > 0);
 			};
 			$scope.focusGame = function (){
 				return (typeof $scope.gamedata !== 'undefined');
