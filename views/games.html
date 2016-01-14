@@ -3,7 +3,7 @@
         <h3>Signature Games</h3>
         <div class="small-block-grid-3" >
         	<div class="gamepreview panel" ng-repeat="game in gameslist | filter:{ game_type: 'sig' }">
-        		<a href="/games?game={{game.game_title}}">
+        		<a href="/games?id={{game.game_id}}">
         			<img class="th radius" ng-src='../images/game_thumbs/{{game.thumbnail_name}}'>
         		</a>
         		<b>{{game.game_title}}</b>
@@ -14,7 +14,7 @@
         <h3>Jam Games</h3>
         <div class="small-block-grid-3" >
             <div class="gamepreview panel" ng-repeat="game in gameslist | filter:{ game_type: 'jam' }">
-                <a href="/games?game={{game.game_title}}">
+                <a href="/games?id={{game.game_id}}">
                     <img class="th radius" ng-src='../images/game_thumbs/{{game.thumbnail_name}}'>
                 </a>
                 <b>{{game.game_title}}</b>

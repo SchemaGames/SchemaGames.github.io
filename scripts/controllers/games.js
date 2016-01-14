@@ -19,8 +19,8 @@
 						$scope.gameslist = data;
 					});
 			};
-			$scope.getGame = function (gamename) {
-				$http.get('https://api.schemagames.com/game?id='+gamename)
+			$scope.getGame = function (gameid) {
+				$http.get('https://api.schemagames.com/game?id='+gameid)
 					.success(function (data) {
 						$scope.gamedata = data[0];
 						$scope.aspectRatio = (data[0].aspect_height / data[0].aspect_width)*100;
