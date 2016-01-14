@@ -54,7 +54,7 @@ angular.module('SchemaApp')
     $scope.getThingContent = function() {
         $http.get('https://api.schemagames.com/thing?id='+$location.search().id)
             .success(function (data) {
-                $scope.thing = data;
+                $scope.thing = data[0];
             });
     };
 

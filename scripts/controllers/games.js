@@ -11,14 +11,16 @@
 	angular.module('SchemaApp')
 		.controller('GamesCtrl', ["$scope","$http","$location","$sce",function ($scope, $http,$location,$sce) {
 
+			$scope.gameslist = [];
+
 			$scope.getGamesPreview = function () {
-				$http.get('https:://api.schemagames.com/game')
+				$http.get('https://api.schemagames.com/game')
 					.success(function (data) {
 						$scope.gameslist = data;
 					});
 			};
 			$scope.getGame = function (gamename) {
-				$http.get('https:://api.schemagames.com/game?id='+gamename)
+				$http.get('https://api.schemagames.com/game?id='+gamename)
 					.success(function (data) {
 						$scope.gamedata = data[0];
 						$scope.aspectRatio = (data[0].aspect_height / data[0].aspect_width)*100;
