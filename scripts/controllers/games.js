@@ -47,8 +47,8 @@
 				$scope.trustedUrl = $sce.trustAsResourceUrl(url);
 			};
 
-			if (typeof $location.search().game !== "undefined") {
-				$scope.getGame($location.search().game);
+			if (typeof $location.search().id !== "undefined") {
+				$scope.getGame($location.search().id);
 			}
 			else {
 				$scope.getGamesPreview();
