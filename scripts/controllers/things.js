@@ -34,27 +34,31 @@ angular.module('SchemaApp')
         //No type specified, get all the things
         if($routeParams.thingType === undefined || $routeParams.thingType === "all")
         {
-            $http.get('https://api.schemagames.com/thing?limit='+$scope.maxThingsPerPage)
+            $http.get('db/things.json')
             .success(function (data) {
-                $scope.thingslist = data;
+                let limitedData = data.splice(0, $scope.maxThingsPerPage);
+                $scope.thingslist = limitedData;
                 $scope.showList = true;
             });
         }
         //Type specified, get things of that type
         else
         {
-            $http.get('https://api.schemagames.com/thing?type='+$routeParams.thingType+'&limit='+$scope.maxThingsPerPage)
+            $http.get('db/things.json')
             .success(function (data) {
-                $scope.thingslist = data;
+                let typedData = data.filter(thing => thing.thing_type == $routeParams.thingType).splice(0, $scope.maxThingsPerPage);
+                $scope.thingslist = typedData;
                 $scope.showList = true;
             });
         }
     };
 
     $scope.getThingContent = function() {
-        $http.get('https://api.schemagames.com/thing?id='+$location.search().id)
+        $http.get('db/things.json')
             .success(function (data) {
-                $scope.thing = data[0];
+                let locationId = $location.search().id;
+                let specifiedThing = data.find(thing => thing_id == locationId);
+                $scope.thing = specifiedThing;
             });
     };
 
