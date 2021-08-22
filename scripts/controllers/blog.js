@@ -35,7 +35,7 @@
 		//AJAX requests
 		$scope.getArticles = function() {
 			//$http.get('https://api.schemagames.com/article?limit='+$scope.articlesPerPage)
-			$http.get('db/articles.json') 
+			$http.get('db/articles.json')
 			.success(function (data) {
 				let sortedData = data.sort((a, b) => b.post_time - a.post_time).slice(0, $scope.articlesPerPage);
 				$scope.articleslist = sortedData;
@@ -43,8 +43,8 @@
 				if(typeof $scope.articleslist !== 'undefined' && $scope.articleslist.length > 0) {
 					var topTime = parseFloat($scope.articleslist[0].post_time) + 1;
 					var botTime = parseFloat($scope.articleslist[$scope.articleslist.length - 1].post_time) - 1;
-					$scope.setNewerLink(topTime);
-					$scope.setOlderLink(botTime);
+					$scope.setNewerLink(topTime, sortedData);
+					$scope.setOlderLink(botTime, sortedData);
 				}
 				else {
 					$scope.noArticles="There are no blog entries on this date range";
