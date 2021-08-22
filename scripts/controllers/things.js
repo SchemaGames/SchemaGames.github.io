@@ -57,7 +57,7 @@ angular.module('SchemaApp')
         $http.get('db/things.json')
             .success(function (data) {
                 let locationId = $location.search().id;
-                let specifiedThing = data.find(thing => thing_id == locationId);
+                let specifiedThing = data.find(thing => thing.thing_id == locationId);
                 $scope.thing = specifiedThing;
             });
     };

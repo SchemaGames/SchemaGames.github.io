@@ -27,6 +27,8 @@
 							$scope.gamedata = chosen_game;
 							$scope.aspectRatio = (chosen_game.aspect_height / chosen_game.aspect_width)*100;
 							$scope.setUrl(chosen_game.game_link);
+						} else {
+							console.log("Couldn't find game with id in data:", gameid, data);
 						}
 					});
 			};
