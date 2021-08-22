@@ -40,10 +40,6 @@
                     templateUrl: 'views/blog.html',
                     controller: 'BlogCtrl'
                 })
-	            .when('/archive', {
-		            templateUrl: 'views/archive.html',
-		            controller: 'ArchiveCtrl'
-	            })
                 .when('/things', {
                     templateUrl: 'views/things.html',
                     controller: 'ThingsCtrl'
@@ -56,14 +52,6 @@
 		            templateUrl: 'views/privacy.html',
 		            controller: 'ThingsCtrl'
 	            })
-	            .when('/contact', {
-		            templateUrl: 'views/contact.html',
-		            controller: 'ContactCtrl'
-	            })
-                .when('/press', {
-                    templateUrl: 'views/press.html',
-                    controller: 'PressCtrl'
-                })
                 .otherwise({
                     redirectTo: '/'
                 });
