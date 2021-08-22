@@ -8,6 +8,7 @@ module.exports = {
     path: path.resolve(__dirname),
   },
   mode: 'production',
+  devtool: 'source-map',
   module: {
     rules: [
       {
