@@ -23,3 +23,10 @@ import './scripts/controllers/about.js';
 import './scripts/controllers/blog.js';
 import './scripts/controllers/things.js';
 // All of the above provide their funcionality via side effects from within an IIFE
+
+import './deps/foundation/css/foundation.min.css';
+import './deps/highlight/styles/docco.css';
+import './styles/fonts/karla.css';
+import './styles/fonts/lobster.css';
+import './styles/animations.css';
+import './styles/schema.css';
