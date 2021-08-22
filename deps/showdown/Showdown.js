@@ -117,7 +117,7 @@ Showdown.converter = function (converter_options) {
 // Automatic Extension Loading (node only):
 //
     if (typeof module !== 'undefined' && typeof exports !== 'undefined' && typeof require !== 'undefined') {
-        var fs = require('fs');
+        var fs = window.require('fs');
 
         if (fs) {
             // Search extensions folder
@@ -129,7 +129,7 @@ Showdown.converter = function (converter_options) {
             // Load extensions into Showdown namespace
             Showdown.forEach(extensions, function (ext) {
                 var name = stdExtName(ext);
-                Showdown.extensions[name] = require('./extensions/' + ext);
+                Showdown.extensions[name] = window.require('./extensions/' + ext);
             });
         }
     }

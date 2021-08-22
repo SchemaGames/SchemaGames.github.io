@@ -1,0 +1,26 @@
+{
+  "name": "sg-website",
+  "version": "1.0.0",
+  "description": "Schema Games Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/SchemaGames/SchemaGames.github.io.git"
+  },
+  "author": "Ben Elliott",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SchemaGames/SchemaGames.github.io/issues"
+  },
+  "homepage": "https://github.com/SchemaGames/SchemaGames.github.io#readme",
+  "devDependencies": {
+    "css-loader": "^6.2.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
+  }
+}

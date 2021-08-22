@@ -34,6 +34,11 @@
   "scripts": {
     "test": "mocha ./test/run.js"
   },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
   "devDependencies": {
     "angular": "^1.3.2",
     "grunt": "^0.4.5",

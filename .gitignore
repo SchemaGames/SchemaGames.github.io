@@ -4,3 +4,4 @@ sftp-config.json
 php/mysqlauth*
 projectFilesBackup/*
 *.zip
+node_modules
