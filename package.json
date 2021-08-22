@@ -19,6 +19,7 @@
   "homepage": "https://github.com/SchemaGames/SchemaGames.github.io#readme",
   "devDependencies": {
     "css-loader": "^6.2.0",
+    "script-loader": "^0.7.2",
     "style-loader": "^3.2.1",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0"

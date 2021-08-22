@@ -11,6 +11,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: [/deps\/.*\.js$/, /scripts\/.*\.js$/],
+        use: [ 'script-loader' ]
+      },
+      {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
