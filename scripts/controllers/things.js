@@ -58,6 +58,8 @@ angular.module('SchemaApp')
             .success(function (data) {
                 let locationId = $location.search().id;
                 let specifiedThing = data.find(thing => thing.thing_id == locationId);
+                specifiedThing.content_url = $sce.trustAsResourceUrl(specifiedThing.content_url);
+                
                 $scope.thing = specifiedThing;
             });
     };
@@ -67,7 +69,6 @@ angular.module('SchemaApp')
         // A thing ID is set, use it to display that thing
         $scope.showThing = true;
         $scope.getThingContent();
-        $scope.thing.content_url = $sce.trustAsResourceUrl($scope.thing.content_url);
     }
     else if (typeof $routeParams.thingType === "undefined") {
         // At the top level of things, simply display links as usual

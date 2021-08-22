@@ -22,7 +22,7 @@
 			$scope.getGame = function (gameid) {
 				$http.get('db/games.json')
 					.success(function (data) {
-						let chosen_game = data.find(game => game.game_id === gameid);
+						let chosen_game = data.find(game => game.game_id == gameid);
 						if(chosen_game) {
 							$scope.gamedata = chosen_game;
 							$scope.aspectRatio = (chosen_game.aspect_height / chosen_game.aspect_width)*100;
